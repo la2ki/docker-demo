@@ -22,19 +22,19 @@ RUN adduser --disabled-password --gecos "" java
 RUN apt install git -y
 RUN apt install maven -y
 
-RUN wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.96/bin/apache-tomcat-9.0.96.tar.gz
-RUN tar -xzvf /opt/apache-tomcat-9.0.96.tar.gz -C /opt
-RUN rm /opt/apache-tomcat-9.0.96.tar.gz
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.31/bin/apache-tomcat-10.1.31.tar.gz
+RUN tar -xzvf /opt/apache-tomcat-10.1.31.tar.gz -C /opt
+RUN rm /opt/apache-tomcat-10.1.31.tar.gz
 
 RUN sudo su java
 RUN git clone https://github.com/la2ki/docker-demo.git
 WORKDIR /opt/docker-demo
 RUN mvn clean package
-RUN rm -rf /opt/apache-tomcat-9.0.96/webapps
-RUN mkdir /opt/apache-tomcat-9.0.96/webapps
-RUN cp /opt/docker-demo/target/docker-demo*.war /opt/apache-tomcat-9.0.96/webapps/ROOT.war
+RUN rm -rf /opt/apache-tomcat-10.1.31/webapps
+RUN mkdir /opt/apache-tomcat-10.1.31/webapps
+RUN cp /opt/docker-demo/target/docker-demo*.war /opt/apache-tomcat-10.1.31/webapps/ROOT.war
 RUN sudo chown -R java:java /opt/docker-demo
-RUN sudo chown -R java:java /opt/apache-tomcat-9.0.96
-RUN sudo chmod +x /opt/apache-tomcat-9.0.96/bin/catalina.sh
+RUN sudo chown -R java:java /opt/apache-tomcat-10.1.31
+RUN sudo chmod +x /opt/apache-tomcat-10.1.31/bin/catalina.sh
 USER java
-CMD [ "/opt/apache-tomcat-9.0.96/bin/catalina.sh", "run"]
+CMD [ "/opt/apache-tomcat-10.1.31/bin/catalina.sh", "run"]

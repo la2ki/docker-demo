@@ -14,7 +14,7 @@ docker run -p 8080:8080 --name demo_docker demo-docker
 docker run -p 8080:8080 -t -d demo-docker
 
 #Connect to docker image to execute bash command:
-docker exec -it demo-docker bash
+docker exec -it demo_docker bash
 
 #To install SSH server so it can connect through SSH:
 apt update
