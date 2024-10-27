@@ -1,0 +1,21 @@
+# Build the image
+docker build -t demo-docker .
+
+# Run the container
+docker run -it demo-docker
+
+$Docker run and stay
+docker run -it demo-docker bash
+
+#Connect to docker image to execute bash command:
+docker exec -it my-ubuntu-container-name bash
+
+#To install SSH server so it can connect through SSH:
+apt update
+apt install -y openssh-server
+service ssh start
+
+#To check IP:
+#docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 1efed69b366d1227e8e935cb9caa0d0d7d8ac7fc88c70d32d6ee1943dcac06e2
+
+
