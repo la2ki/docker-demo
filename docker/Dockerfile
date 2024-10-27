@@ -30,7 +30,11 @@ RUN sudo su java
 RUN git clone https://github.com/la2ki/docker-demo.git
 WORKDIR /opt/docker-demo
 RUN mvn clean package
+RUN rm -rf /opt/apache-tomcat-9.0.96/webapps
+RUN mkdir /opt/apache-tomcat-9.0.96/webapps
+RUN cp /opt/docker-demo/target/docker-demo*.war /opt/apache-tomcat-9.0.96/webapps/ROOT.war
 RUN sudo chown -R java:java /opt/docker-demo
 RUN sudo chown -R java:java /opt/apache-tomcat-9.0.96
-RUN sudo chmod +x /opt/apache-tomcat-9.0.96/bin/startup.sh
-RUN su - java -c /opt/apache-tomcat-9.0.96/bin/startup.sh
+RUN sudo chmod +x /opt/apache-tomcat-9.0.96/bin/catalina.sh
+USER java
+CMD [ "/opt/apache-tomcat-9.0.96/bin/catalina.sh", "run"]
