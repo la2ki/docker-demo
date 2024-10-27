@@ -4,11 +4,17 @@ docker build -t demo-docker .
 # Run the container
 docker run -it demo-docker
 
-$Docker run and stay
+#Docker run and stay
 docker run -it demo-docker bash
 
+#Docker run with port
+docker run -p 8080:8080 demo-docker
+
+#Detach (not exiting)
+docker run -p 8080:8080 -t -d demo-docker
+
 #Connect to docker image to execute bash command:
-docker exec -it my-ubuntu-container-name bash
+docker exec -it demo-docker bash
 
 #To install SSH server so it can connect through SSH:
 apt update
