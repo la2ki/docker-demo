@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: demo-docker:latest  # Replace with your application image
+    image: markolalic/demo-docker:latest  # Replace with your application image
     ports:
       - "8080:8080"  # Maps host port 3000 to container port 3000
     environment:

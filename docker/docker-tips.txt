@@ -28,3 +28,10 @@ service ssh start
 docker compose up -d
 docker compose down
 
+#Publish docker img
+docker login
+docker tag demo-docker markolalic/demo-docker:latest
+docker push markolalic/demo-docker:latest
+
+
+
